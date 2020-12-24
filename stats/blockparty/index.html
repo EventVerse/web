@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="playerNameTitle">Statistiky | ${sessionUrl.getParameter("player")</title>
+</head>
+<body>
+
+<p style="font-size: 50px;" id="playerName">${sessionUrl.getParameter("p")</p>
+<p style="font-size: 15px;" id="gameID">Event: <b>BlockParty</b></p>
+<p style="font-size: 25px;" id="playerCoins">Coiny: ${cz.lukynka.eventverse.api.player.getEventCoins()}</p>
+<p style="font-size: 25px;" id="playerShards">Získané shardy: ${cz.lukynka.eventverse.api.player.getEarnedShards()}</p>
+<p style="font-size: 25px;" id="playerRoundWins">Vyhraná kola: ${cz.lukynka.eventverse.api.player.getEventRoundWins()}</p>
+<p style="font-size: 25px;">-----------------</p>
+<p style="font-size: 25px;" id="blockpartyPlayerBoostsCollected">Boosty Sebrány: ${de.leonkoth.blockparty.stats.getBoostsCollected(p, player.getName(session.p))}</p>
+<p style="font-size: 25px;" id="blockpartyPlayerFalls">Spadnutí: ${de.leonkoth.blockparty.stats.getFalls(p, player.getName(session.p))}</p>
+
+
+
+</body>
+</html>
+
+
+<script>
+
+const queryString = window.location.search;
+console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
+
+
+var playerNameTitle = document.getElementById("playerNameTitle")
+var playerNameText = document.getElementById("playerName")
+var gameIDText = document.getElementById("gameID")
+var playerCoinsText = document.getElementById("playerCoins")
+var playerShardsText = document.getElementById("playerShards")
+var playerRoundWinsText = document.getElementById("playerRoundWins")
+
+var blockpartyPlayerBoostsCollectedText = document.getElementById("blockpartyPlayerBoostsCollected")
+var blockpartyPlayerFallsText = document.getElementById("blockpartyPlayerFalls")
+
+const playerName = urlParams.get('p')
+playerNameTitle.innerHTML = "Statistiky | " +playerName
+playerNameText.innerHTML = playerName
+
+const playerCoins = urlParams.get('c')
+playerCoinsText.innerHTML = "Coiny: <b>" +playerCoins + "</b> "
+
+const playerRoundWins = urlParams.get('w')
+playerRoundWinsText.innerHTML = "Vyhraná kola: <b>" +playerRoundWins + "</b> "
+
+const playerShards = urlParams.get('s')
+playerShardsText.innerHTML = "Získané Shardy: <b>+" +playerShards + "</b> "
+
+const blockpartyPlayerFalls = urlParams.get('f')
+blockpartyPlayerFallsText.innerHTML = "Spadnutí: <b>" +blockpartyPlayerFalls + "</b> "
+
+const blockpartyPlayerBoostsCollected = urlParams.get('bc')
+blockpartyPlayerBoostsCollectedText.innerHTML = "Boosty sebrány: <b>" +blockpartyPlayerBoostsCollected + "</b> "
+
+
+</script>
